@@ -1,7 +1,14 @@
 // our packages
 import app from './app';
 import {logger} from '../util';
+import {db} from '../db';
 
+// check if database is initialized
+if (db) {
+  logger.info('Database connected');
+} else {
+  db.on('error', console.error.bind(console, 'database connection error: '));
+}
 // start server
 app.listen(8080, function() {
   const host = this.address().address;
