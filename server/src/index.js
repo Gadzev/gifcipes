@@ -1,7 +1,7 @@
 // our packages
 import app from './app';
-import {logger} from '../util';
-import {db} from '../db';
+import {logger} from './util';
+import {db} from './db';
 
 // check if database is initialized
 if (db) {
