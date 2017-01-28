@@ -9,6 +9,7 @@ import morgan from 'morgan';
 // our packages
 import {logger} from './util';
 import {auth as authConfig} from '../config';
+import setupAuthRoutes from './auth';
 
 // init app
 const app = express();
@@ -40,8 +41,11 @@ app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 
+// setup authentication routes
+setupAuthRoutes(app);
+
 // catch all unhandled errors
-app.use((err, req, res, next) => {
+app.use((err, req, res, next) => { // eslint-disable-line
   logger.error(err.stack);
   res.status(500).send(err);
 });

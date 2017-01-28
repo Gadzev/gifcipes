@@ -22,7 +22,7 @@ passport.deserializeUser(async (id, done) => {
 // use LocalStrategy
 passport.use(new LocalStrategy(async (login, password, done) => {
   // find all users with matching logon
-  const users = await User.filter({login}).limit(1).run();
+  const users = await User.findOne({login}).limit(1).run();
   // get the first match
   const user = users[0];
   // check if exists
