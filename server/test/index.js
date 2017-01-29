@@ -5,4 +5,4 @@ require('babel-core/register');
 // require('./main');
 // require auth tests
 // require('./register');
-  require('./login');
+// require('./login');
