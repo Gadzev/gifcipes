@@ -27,6 +27,7 @@ test('Should login with existing username and password', (t) => {
       t.deepEqual(actualBody.user, decodedUser._doc, 'User must match token'); // eslint-disable-line
 
       app.set('token', actualBody.token);
+      app.set('user', actualBody.user);
 
       t.end();
     });
