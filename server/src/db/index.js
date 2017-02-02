@@ -1,2 +1,2 @@
-export {db} from './mongoose';
+export {thinky, r} from './thinky';
 export {User} from './user';

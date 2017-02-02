@@ -1,41 +1,34 @@
 import test from 'tape';
-import request from 'supertest';
-import mongoose from 'mongoose';
 
 // our packages
-import app from '../src/app';
+import {db as dbConfig} from '../config';
+import {thinky, r} from '../src/db';
 
-test('GET /', (t) => {
-  request(app)
-    .get('/')
-    .expect(200)
-    .expect('Content-Type', /text\/html/)
-    .end((err, res) => {
-      const expectedBody = 'Hello, World!';
-      const actualBody = res.text;
+// tests
+import core from './core';
+import register from './register';
+import login from './login';
+import user from './user';
 
-      t.error(err, 'No error');
-      t.equal(actualBody, expectedBody, 'Retrieve body');
+export default (reqlite) => {
+  thinky.dbReady().then(() => {
+    // clean the database
+    test(async (t) => {
+      await r.db(dbConfig.db).table('User').delete();
       t.end();
     });
-});
 
-test('404 on nonexistent URL', (t) => {
-  request(app)
-    .get('/GETShouldFailOnRandomURL')
-    .expect(404)
-    .expect('Content-Type', /text\/html/)
-    .end((err, res) => {
-      const expectedBody = 'Cannot GET /GETShouldFailOnRandomURL\n';
-      const actualBody = res.text;
+    // execute tests
+    core(test);
+    register(test);
+    login(test);
+    user(test);
 
-      t.error(err, 'No error');
-      t.equal(actualBody, expectedBody, 'Retrieve body');
+    // close db connections
+    test((t) => {
+      setImmediate(() => r.getPoolMaster().drain());
+      reqlite.stop();
       t.end();
     });
-});
-
-test((t) => {
-  mongoose.disconnect();
-  t.end();
-});
+  });
+};

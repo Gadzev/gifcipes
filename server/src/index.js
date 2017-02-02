@@ -1,19 +1,18 @@
 // our packages
 import app from './app';
 import {logger} from './util';
-import {db} from './db';
+import {thinky} from './db';
 
-// check if database is initialized
-if (db) {
-  logger.info('Database connected');
-} else {
-  db.on('error', console.error.bind(console, 'database connection error: '));
-}
-// start server
-app.listen(8080, function() {
-  const host = this.address().address;
-  const port = this.address().port;
-  logger.info(`Gifcipes server listening at http://${host}:${port}`);
+// wait for DB to initialize
+thinky.dbReady().then(() => {
+  logger.info('Database ready, starting server...');
+
+  // start server
+  app.listen(8080, function() {
+    const host = this.address().address;
+    const port = this.address().port;
+    logger.info(`Gifcipes server listening at http://${host}:${port}`);
+  });
 });
 
 // output all uncaught exceptions

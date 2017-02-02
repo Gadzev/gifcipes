@@ -1,10 +1,12 @@
+/* eslint global-require: 0 */
+process.env.NODE_ENV = 'testing';
 // require babel require hook
 require('babel-core/register');
+// create reqlite instance
+const ReqliteServer = require('reqlite');
 
-// require main tests
- //require('./main');
-// require auth tests
-//require('./register');
-//require('./login');
-// require users tests
-require('./user');
+const server = new ReqliteServer({silent: true});
+// require and start main tests
+const startTests = require('./main').default;
+
+startTests(server);

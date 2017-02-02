@@ -1,12 +1,8 @@
-import mongoose from 'mongoose';
+import {thinky} from './thinky';
 
-const userSchema = new mongoose.Schema({
-  name: String,
-  username: {type: String, required: true, unique: true},
-  password: {type: String, required: true},
-  admin: Boolean,
-  created_at: Date,
-  updated_at: Date,
+// Create a model - the table is automatically created
+export const User = thinky.createModel('User', {
+    login: thinky.type.string().required(),
+    password: thinky.type.string().required(),
+    registrationDate: thinky.type.date().default(thinky.r.now()),
 });
-
-export const User = mongoose.model('User', userSchema);
