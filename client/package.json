@@ -4,7 +4,7 @@
   "description": "Gifcipes portal client",
   "main": "index.js",
   "scripts": {
-    "start": "webpack"
+    "start": "node serve.js"
   },
   "repository": {
     "type": "git",
@@ -32,11 +32,14 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
+    "express": "^4.14.1",
     "file-loader": "^0.10.0",
     "json-loader": "^0.5.4",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.22"
+    "webpack": "^2.1.0-beta.22",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-hot-middleware": "^2.16.1"
   },
   "dependencies": {
     "react": "^15.4.2",
