@@ -1,24 +1,16 @@
-import {createStore, combineReducers} from 'redux';
-import {routerReducer} from 'react-router-redux';
+import {createStore, applyMiddleware, compose} from 'redux';
+import {createEpicMiddleware} from 'redux-observable';
 
-const helloWorld = (state = {world: 'click me'}, action) => {
-  switch (action.type) {
-    case 'HELLO':
-      return {world: 'World'};
-    default:
-      return state;
-  }
-};
+// our packages
+import rootReducer from './rootReducer';
+import rootEpic from './rootEpic';
 
-export const helloWorldAction = () => ({
-  type: 'HELLO',
-});
+// instantiate epic middleware
+const epicMiddleware = createEpicMiddleware(rootEpic);
 
-const reducer = combineReducers({
-  helloWorld,
-  routing: routerReducer,
-});
+// pick debug or dummy enchancer
+const composeEnchancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); // eslint-disable-line
+const store = createStore(rootReducer, composeEnchancers(applyMiddleware(epicMiddleware)));
 
 export default store;
