@@ -12,6 +12,9 @@ const app = express();
 
 // setup hot reload
 config.plugins = [
+  new webpack.DefinePlugin({
+    'process.env': {NODE_ENV: JSON.stringify(process.env.NODE_ENV)},
+  }),
   new webpack.HotModuleReplacementPlugin(),
   // setup no erros plugin
   new webpack.NoErrorsPlugin(),
