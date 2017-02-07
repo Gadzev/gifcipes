@@ -13,9 +13,10 @@ import App from './app';
 import store from './store';
 
 // our pages
-import Home from './home';
-import Other from './other';
-import NotFound from './notfound';
+import Home from './pages/home';
+import Login from './pages/login';
+import Register from './pages/register';
+import NotFound from './pages/notfound';
 
 // create an enchanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
@@ -26,7 +27,8 @@ ReactDOM.render((
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
-        <Route path="other" component={Other} />
+        <Route path="login" component={Login} />
+        <Route path="register" component={Register} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>
