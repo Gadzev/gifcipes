@@ -6,6 +6,7 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import {Provider} from 'react-redux';
 
 // styles
+// TODO: Fix bootstrap webpack error
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // our packages

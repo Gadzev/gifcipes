@@ -18,8 +18,7 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.css$/,
-      loaders: ['style', 'css?modules'],
-      exclude: /node_modules/,
+      loader: 'style-loader!css-loader',
     }, {
       test: /node_modules\/.+\.css$/,
       loaders: ['style', 'css'],
