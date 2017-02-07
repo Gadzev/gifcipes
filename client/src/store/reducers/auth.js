@@ -18,7 +18,6 @@ export const auth = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.REGISTER_SUCCESS:
             return {
-                ...state,
                 redirectToLogin: true,
             };
         case ActionTypes.LOGIN_SUCCESS:
@@ -27,6 +26,12 @@ export const auth = (state = initialState, action) => {
             return {
                 ...action.payload,
             };
+        case ActionTypes.LOGIN_ERROR:
+        case ActionTypes.REGISTER_ERROR:
+        return {
+            ...state,
+            error: action.payload.error,
+        };
         default:
             return state;
     }
