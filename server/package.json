@@ -8,7 +8,8 @@
     "db:start": "docker run -d -p 28015:28015 -p :8090:8080 -v /c/Users/Lignux/Documents/Projects/gifcipes/server/db:/data --name gifcipesdb rethinkdb",
     "db:stop": "docker stop gifcipesdb",
     "db:rm": "docker rm gifcipesdb",
-    "test": "eslint src/ && SET NODE_ENV=testing && node test/index.js | tap-spec"
+    "test": "eslint src/ && NODE_ENV=testing node test/index.js | tap-spec",
+    "windowsTest": "eslint src/ && SET NODE_ENV=testing && node test/index.js | tap-spec"
   },
   "keywords": [
     "javascript",
