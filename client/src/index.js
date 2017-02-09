@@ -7,6 +7,7 @@ import {Provider} from 'react-redux';
 
 // styles
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../src/components/notifications/transitions.css';
 
 // our packages
 import App from './app';

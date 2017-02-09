@@ -1,0 +1,21 @@
+.transitions-enter {
+  opacity: 0.01;
+  height: 0px;
+}
+
+.transitions-enter.transitions-enter-active {
+  opacity: 1;
+  height: 52px;
+  transition: 700ms;
+}
+
+.transitions-leave {
+  opacity: 1;
+  height: 52px;
+}
+
+.transitions-leave.transitions-leave-active {
+  opacity: 0.01;
+  height: 0px;
+  transition: 700ms;
+}
