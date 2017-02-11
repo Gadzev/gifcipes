@@ -33,15 +33,3 @@ export const updateUser = action$ => action$
       payload: {error},
     })),
   );
-
-export const logoutUser = action$ => action$
-  .ofType(ActionTypes.LOGOUT_USER)
-  .switchMap(({payload}) => Observable
-    .ajax.post('http://localhost:8080/api/logout', payload)
-    .map(res => res.response)
-    .mergeMap(response => Observable.of(
-      {
-        type: ActionTypes.LOGOUT_USER_SUCCESS,
-        payload: response,
-      },
-    )));
