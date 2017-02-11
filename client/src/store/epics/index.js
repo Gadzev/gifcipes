@@ -1,7 +1,7 @@
 import {login, register} from './auth';
 import {addNotification} from './notifications';
 import {helloWorld} from './helloWorld';
-import {getUser} from './users';
+import {getUser, updateUser} from './users';
 
 export default [
     login,
@@ -9,4 +9,5 @@ export default [
     addNotification,
     helloWorld,
     getUser,
+    updateUser,
 ];

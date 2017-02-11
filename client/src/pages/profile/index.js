@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
 import {getUser} from '../../store/actions';
@@ -28,12 +27,13 @@ class Home extends React.Component {
 
     render() {
         const {user, loadedUser, params, getUser} = this.props;
+        const allowEdit = user && loadedUser && user.id === loadedUser.id;
 
         return (
             <div>
                 <Navbar user={user} current={`profile/${params.id}`} />
 
-                <User user={loadedUser} />
+                <User user={loadedUser} edit={allowEdit} />
             </div>
         );
     }
