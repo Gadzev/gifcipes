@@ -29,6 +29,13 @@ export const auth = (state = initialState, action) => {
         case ActionTypes.LOGIN_ERROR:
         case ActionTypes.REGISTER_ERROR:
             return state;
+        case ActionTypes.LOGOUT_USER_SUCCESS:
+            localStorage.removeItem('user.token');
+            localStorage.removeItem('user.data');
+            return {
+                ...action.payload,
+                redirectToHome: true,
+            };
         default:
             return state;
     }

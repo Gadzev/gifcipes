@@ -48,3 +48,8 @@ export const updateUser = payload => ({
     type: ActionTypes.UPDATE_USER,
     payload,
 });
+
+export const logoutUser = payload => ({
+    type: ActionTypes.LOGOUT_USER,
+    payload,
+});

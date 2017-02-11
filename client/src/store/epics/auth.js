@@ -51,3 +51,15 @@ export const register = action$ => action$
       Actions.addNotificationAction({text: registerErrorToMessage(error), alertType: 'danger'}),
     )),
   );
+
+export const logoutUser = action$ => action$
+  .ofType(ActionTypes.LOGOUT_USER)
+  .switchMap(({payload}) => Observable
+    .ajax.post('http://localhost:8080/api/logout', payload)
+    .map(res => res.response)
+    .mergeMap(response => Observable.of(
+      {
+        type: ActionTypes.LOGOUT_USER_SUCCESS,
+        payload: response,
+      },
+    )));
