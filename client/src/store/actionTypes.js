@@ -20,3 +20,6 @@ export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const LOGOUT_USER_SUCCESS = 'LOGOUT_USER_SUCCESS';
+// gifcipes actions
+export const GET_GIFCIPE = 'GET_GIFCIPE';
+export const GET_GIFCIPE_SUCCESS = 'GET_GIFCIPE_SUCCESS';

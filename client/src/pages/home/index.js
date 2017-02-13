@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
 import Navbar from '../../components/navbar';
+import {Gifcipe} from '../../components/gifcipes';
 
 import {helloWorldAction} from '../../store/actions';
 
@@ -17,6 +17,7 @@ const mapDispatchProps = dispatch => ({
 const Home = ({user}) => (
   <div className="jumbotron">
     <Navbar user={user} current={'/'} />
+    <Gifcipe />
   </div>
  );
 
