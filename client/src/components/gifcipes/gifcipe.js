@@ -17,26 +17,41 @@ const Gifcipe = ({gifcipe, test, click}) => {
 
     if (gifcipe) {
      for (let i = 2; i < gifcipe.data.children.length; i++) {
-         data.push(
-                <div className="col-xs-6 col-md-3" key={i}>
-                    <img src={gifcipe.data.children[i].data.thumbnail} className="img-thumbnail" alt="test" />
-                </div>,
-            );
+         let src = gifcipe.data.children[i].data.url.toString().replace('.gifv', '').replace('https://', '');
+         src = src.replace('.gif', '');
+         console.log(src);
+         if (gifcipe.data.children[i].data.domain === 'gfycat.com') {
+            data.push(
+                    <div className="col-xs-6 col-md-3" key={i}>
+                        <video width="210" preload="none" poster={`https://thumbs.${src}-poster.jpg`}>
+                            <source src={`https://giant.${src}.mp4`} type="video/mp4" />
+                        </video>
+                    </div>,
+                );
+            } else if (gifcipe.data.children[i].data.domain === 'i.imgur.com') {
+                data.push(
+                    <div className="col-xs-6 col-md-3" key={i}>
+                        <video width="210" preload="none" poster={`${src}h.jpg`}>
+                            <source src={`${src}.mp4`} type="video/mp4" />
+                        </video>
+                    </div>,
+                );  
+            }
         }
     }
 
     return (
-    <div>
-        <button className="btn btn-danger" onClick={test}>
-          Click
-        </button>
+        <div className="container-fluid">
+            <button className="btn btn-danger" onClick={test}>
+                Click
+            </button>
 
-        {click && (<div key={data.key}>
-            {data}
+            {click && (<div className="row" key={data.key}>
+                {data}
+            </div>
+            )}
         </div>
-        )}
-    </div>
-);
+    );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gifcipe);
