@@ -20,8 +20,9 @@ module.exports = {
       test: /\.css$/,
       loader: 'style-loader!css-loader',
     }, {
-      test: /node_modules\/.+\.css$/,
-      loaders: ['style', 'css'],
+      test: /\.scss$/,
+      include: path.resolve(__dirname, 'src'),
+      loaders: ["style", "css", "sass"],
     }, {
       test: /\.js$/,
       exclude: /node_modules/,
