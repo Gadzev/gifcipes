@@ -15,7 +15,7 @@ const mapDispatchProps = dispatch => ({
 });
 
 const Home = ({user}) => (
-  <div className="jumbotron">
+  <div className="container-fluid">
     <Navbar user={user} current={'/'} />
     <Gifcipe />
   </div>

@@ -3,7 +3,7 @@ import React from 'react';
 import Footer from '../components/footer';
 
 export default ({children}) => (
-  <div className="container">
+  <div>
     {children}
     <Footer />
   </div>

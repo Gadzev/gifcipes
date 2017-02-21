@@ -1,18 +1,16 @@
 .img-thumbnail {
-    height: 220px;
-    width: 220px;
+    height: 250px;
+    width: 350px;
+    margin-top: 3px;
 }
 
 .col-md-3 {
-    width: 230px;
-    height: 230px;
-    padding: 0px;
-    margin-left: 28px;
+     padding-right: 0px; 
+     padding-left: 0px; 
 }
 
-.col-xs-6 {
-    width: 220px;
-    height: 220px;
-    padding: 0px;
-    margin-left: 28px;
+.container-mobile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

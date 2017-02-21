@@ -22,13 +22,13 @@ const Gifcipe = ({gifcipe, test, click}) => {
          src = src.replace('.gif', '');
          if (gifcipe.data.children[i].data.domain === 'gfycat.com') {
             data.push(
-                    <div className="col-xs-6 col-md-3" key={i}>
+                    <div className="col-md-3" key={i}>
                         <img src={`https://thumbs.${src}-poster.jpg`} className="img-thumbnail" />
                     </div>,
                 );
             } else if (gifcipe.data.children[i].data.domain === 'i.imgur.com') {
                 data.push(
-                    <div className="col-xs-6 col-md-3" key={i}>
+                    <div className="col-md-3" key={i}>
                          <img src={`${src}h.jpg`} className="img-thumbnail" />
                     </div>,
                 );
@@ -37,15 +37,16 @@ const Gifcipe = ({gifcipe, test, click}) => {
     }
 
     return (
-        <div className="container-fluid">
+        <div className="container">
             <button className="btn btn-danger" onClick={test}>
                 Click
             </button>
-
+        <div className="container-mobile">
             {click && (<div className="row" key={data.key}>
                 {data}
             </div>
             )}
+        </div>
         </div>
     );
 };
