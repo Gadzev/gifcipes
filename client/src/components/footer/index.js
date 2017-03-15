@@ -1,19 +1,12 @@
 import React from 'react';
 
 import {Notifications} from '../notifications';
+import './footer.scss';
 
-const style = {
-    footer: {
-        position: 'absolute',
-        bottom: '0',
-        width: 'auto',
-        right: '0',
-    },
-};
 
 export default () => (
-    <footer style={style.footer} className="pull-right">
-        <div className="row">
+    <footer className="pull-right footer">
+        <div>
             <div className="col-xs-11 col-sm-9 col-md-7">
                 <Notifications />
             </div>
