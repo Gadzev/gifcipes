@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import {getGifcipe} from '../../store/actions';
 import './gifcipe.scss';
+import fav from '../../img/fav.png'
 
 const mapStateToProps = state => ({
     gifcipe: state.gifcipes.gifcipe,
@@ -22,14 +23,16 @@ const Gifcipe = ({gifcipe, test, click}) => {
          src = src.replace('.gif', '');
          if (gifcipe.data.children[i].data.domain === 'gfycat.com') {
             data.push(
-                    <div className="col-md-3" key={i}>
+                    <div className="col-md-3 thumb-parent" key={i}>
                         <img src={`https://thumbs.${src}-poster.jpg`} className="img-thumbnail" />
+                        <img src={fav} className="fav-icon" />
                     </div>,
                 );
             } else if (gifcipe.data.children[i].data.domain === 'i.imgur.com') {
                 data.push(
                     <div className="col-md-3" key={i}>
                          <img src={`${src}h.jpg`} className="img-thumbnail" />
+                         <img src={fav} className="fav-icon" />
                     </div>,
                 );
             }
