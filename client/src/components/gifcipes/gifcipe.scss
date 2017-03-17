@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
+
 .img-thumbnail {
     height: 250px;
     width: 350px;
@@ -24,4 +26,58 @@
     left: 88%;
     top: 86%;
     opacity: 0.7;
+}
+
+.card-title {
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 1.3em !important;
+    // text-transform: uppercase;
+    color: white;
+    line-height: 35px;
+    height: 35px;
+    width: 97%;
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    font-size: 25px;
+    text-align: center;
+    background-color: transparentize(black, 0.8);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: default;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    -webkit-transition: opacity 0.7s ease;
+}
+
+@media only screen and (max-device-width: 480px) {
+.card-title {
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 1.3em !important;
+    // text-transform: uppercase;
+    color: white;
+    line-height: 35px;
+    height: 35px;
+    width: 97%;
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    font-size: 25px;
+    text-align: center;
+    background-color: transparentize(black, 0.8);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    visibility: visible;
+    transition: none;
+    -webkit-transition: none;
+    opacity: 1;
+    }
+}
+
+.thumb-parent:hover .card-title {
+    visibility: visible;
+    opacity: 1;
 }
