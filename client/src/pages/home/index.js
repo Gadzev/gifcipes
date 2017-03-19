@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import Navbar from '../../components/navbar';
-import {Gifcipe} from '../../components/gifcipes';
+import {Gifcipes} from '../../components/gifcipes';
 
 import {helloWorldAction} from '../../store/actions';
 
@@ -17,7 +17,7 @@ const mapDispatchProps = dispatch => ({
 const Home = ({user}) => (
   <div className="container-fluid">
     <Navbar user={user} current={'/'} />
-    <Gifcipe />
+    <Gifcipes />
   </div>
  );
 

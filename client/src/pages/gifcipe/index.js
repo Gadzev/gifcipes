@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import {Gifcipe} from '../../components/gifcipes';
+
 const mapStateToProps = state => ({
 
 });
@@ -10,12 +12,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export const Gifcipe = () => {
+export const Recipe = () => {
     return (
-        <div> 
-            <h1> Gifcipe component </h1>
-        </div>
+        <Gifcipe />
     );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Gifcipe);
+export default connect(mapStateToProps, mapDispatchToProps)(Recipe);
