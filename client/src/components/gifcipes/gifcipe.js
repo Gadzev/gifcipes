@@ -10,10 +10,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export const Gifcipe = () => {
+export const Gifcipe = ({title}) => {
     return (
         <div> 
-            <h1> Gifcipe component </h1>
+            <h1> {title} </h1>
         </div>
     );
 };

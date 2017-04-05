@@ -33,7 +33,7 @@ ReactDOM.render((
         <Route path="login" component={Login} />
         <Route path="register" component={Register} />
         <Route path="profile/:id" component={Profile} />
-        <Route path="gifcipe" component={Recipe} />
+        <Route path="gifcipe/:title" component={Recipe} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>

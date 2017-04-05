@@ -12,10 +12,19 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export const Recipe = () => {
-    return (
-        <Gifcipe />
-    );
-};
+class Recipe extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {};
+    }
+
+    render() {
+        const {params} = this.props;
+            return (
+                <Gifcipe title={this.props.params.title} />
+            );
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipe);
