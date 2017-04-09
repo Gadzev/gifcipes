@@ -5,10 +5,11 @@ import {Link} from 'react-router';
 import {getGifcipe} from '../../store/actions';
 import './gifcipe.scss';
 import fav from '../../img/fav.png';
+import Spinner from '../spinner';
 
 const mapStateToProps = state => ({
     gifcipe: state.gifcipes.gifcipe,
-    click: state.gifcipes.click,
+    isLoading: state.gifcipes.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -28,7 +29,7 @@ class Gifcipes extends React.Component {
 
     render() {
         const data = [];
-        const {gifcipe} = this.props;
+        const {gifcipe, isLoading} = this.props;
 
         if (gifcipe) {
         for (let i = 2; i < gifcipe.data.children.length; i++) {
@@ -59,9 +60,13 @@ class Gifcipes extends React.Component {
         return (
             <div className="container">
                 <div className="container-mobile">
-                    <div className="row" key={data.key}>
-                        {data}
-                    </div>
+                    {isLoading ? (
+                        <Spinner />
+                    ) : (
+                        <div className="row" key={data.key}>
+                            {data}
+                        </div>
+                    )}
                 </div>
             </div>
         );
