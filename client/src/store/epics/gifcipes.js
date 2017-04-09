@@ -12,3 +12,15 @@ export const getGifcipe = action$ => action$
         payload: response,
       },
     )));
+
+ export const getGifcipeById = action$ => action$
+  .ofType(ActionTypes.GET_GIFCIPE_BY_ID)
+  .switchMap(({payload}) => Observable
+  .ajax.get(`https://www.reddit.com/by_id/${payload}.json`)
+  .map(res => res.response)
+  .mergeMap(response => Observable.of(
+    {
+      type: ActionTypes.GET_GIFCIPE_BY_ID_SUCCESS,
+      payload: response,
+    },
+  )));

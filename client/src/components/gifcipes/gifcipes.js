@@ -25,7 +25,7 @@ const Gifcipes = ({gifcipe, test, click}) => {
          if (gifcipe.data.children[i].data.domain === 'gfycat.com') {
             data.push(
                     <div className="col-md-3 thumb-parent" key={i}>
-                        <Link to={`/gifcipe/${gifcipe.data.children[i].data.title}`}>
+                        <Link to={`/gifcipe/${gifcipe.data.children[i].data.name}`}>
                         <img src={`https://thumbs.${src}-poster.jpg`} className="img-thumbnail" />
                         <img src={fav} className="fav-icon" />
                             <div className="card-title">{gifcipe.data.children[i].data.title}</div>
@@ -34,7 +34,7 @@ const Gifcipes = ({gifcipe, test, click}) => {
             } else if (gifcipe.data.children[i].data.domain === 'i.imgur.com') {
                 data.push(
                         <div className="col-md-3 thumb-parent" key={i}>
-                            <Link to={`/gifcipe/${gifcipe.data.children[i].data.title}`}>
+                            <Link to={`/gifcipe/${gifcipe.data.children[i].data.name}`}>
                             <img src={`${src}h.jpg`} className="img-thumbnail" />
                             <img src={fav} className="fav-icon" />
                                 <div className="card-title">{gifcipe.data.children[i].data.title}</div>

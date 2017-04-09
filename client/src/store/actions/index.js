@@ -58,3 +58,8 @@ export const logoutUser = payload => ({
 export const getGifcipe = () => ({
     type: ActionTypes.GET_GIFCIPE,
 });
+
+export const getGifcipeById = payload => ({
+    type: ActionTypes.GET_GIFCIPE_BY_ID,
+    payload,
+});

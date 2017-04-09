@@ -3,6 +3,7 @@ import {helloWorld} from './helloWorld';
 import {notifications} from './notifications';
 import {users} from './users';
 import {gifcipes} from './gifcipes';
+import {recipe} from './recipe';
 
 export default {
     auth, 
@@ -10,5 +11,6 @@ export default {
     helloWorld,
     users, 
     gifcipes,
-}; 
+    recipe,
+};
 

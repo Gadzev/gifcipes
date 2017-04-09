@@ -2,7 +2,7 @@ import {login, register, logoutUser} from './auth';
 import {addNotification} from './notifications';
 import {helloWorld} from './helloWorld';
 import {getUser, updateUser} from './users';
-import {getGifcipe} from './gifcipes';
+import {getGifcipe, getGifcipeById} from './gifcipes';
 
 export default [
     login,
@@ -13,4 +13,5 @@ export default [
     updateUser,
     logoutUser,
     getGifcipe,
+    getGifcipeById,
 ];

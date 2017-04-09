@@ -22,7 +22,7 @@ class Recipe extends React.Component {
     render() {
         const {params} = this.props;
             return (
-                <Gifcipe title={this.props.params.title} />
+                <Gifcipe id={this.props.params.id} />
             );
     }
 }
