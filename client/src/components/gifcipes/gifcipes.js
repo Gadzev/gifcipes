@@ -15,48 +15,57 @@ const mapDispatchToProps = dispatch => ({
     test: () => dispatch(getGifcipe()),
 });
 
-const Gifcipes = ({gifcipe, test, click}) => {
-    const data = [];
+class Gifcipes extends React.Component {
+    constructor() {
+        super();
 
-    if (gifcipe) {
-     for (let i = 2; i < gifcipe.data.children.length; i++) {
-         let src = gifcipe.data.children[i].data.url.toString().replace('.gifv', '').replace('https://', '');
-         src = src.replace('.gif', '');
-         if (gifcipe.data.children[i].data.domain === 'gfycat.com') {
-            data.push(
-                    <div className="col-md-3 thumb-parent" key={i}>
-                        <Link to={`/gifcipe/${gifcipe.data.children[i].data.name}`}>
-                        <img src={`https://thumbs.${src}-poster.jpg`} className="img-thumbnail" />
-                        <img src={fav} className="fav-icon" />
-                            <div className="card-title">{gifcipe.data.children[i].data.title}</div>
-                    </Link></div>,
-                );
-            } else if (gifcipe.data.children[i].data.domain === 'i.imgur.com') {
+        this.state = {};
+    }
+
+    componentWillMount() {
+        this.props.test();
+    }
+
+    render() {
+        const data = [];
+        const {gifcipe} = this.props;
+
+        if (gifcipe) {
+        for (let i = 2; i < gifcipe.data.children.length; i++) {
+            let src = gifcipe.data.children[i].data.url.toString().replace('.gifv', '').replace('https://', '');
+            src = src.replace('.gif', '');
+            if (gifcipe.data.children[i].data.domain === 'gfycat.com') {
                 data.push(
                         <div className="col-md-3 thumb-parent" key={i}>
                             <Link to={`/gifcipe/${gifcipe.data.children[i].data.name}`}>
-                            <img src={`${src}h.jpg`} className="img-thumbnail" />
+                            <img src={`https://thumbs.${src}-poster.jpg`} className="img-thumbnail" />
                             <img src={fav} className="fav-icon" />
                                 <div className="card-title">{gifcipe.data.children[i].data.title}</div>
-                         </Link></div>,
-                );
+                        </Link></div>,
+                    );
+                } else if (gifcipe.data.children[i].data.domain === 'i.imgur.com') {
+                    data.push(
+                            <div className="col-md-3 thumb-parent" key={i}>
+                                <Link to={`/gifcipe/${gifcipe.data.children[i].data.name}`}>
+                                <img src={`${src}h.jpg`} className="img-thumbnail" />
+                                <img src={fav} className="fav-icon" />
+                                    <div className="card-title">{gifcipe.data.children[i].data.title}</div>
+                            </Link></div>,
+                    );
+                }
             }
         }
-    }
 
-    return (
-        <div className="container">
-            <button className="btn btn-danger" onClick={test}>
-                Click
-            </button>
-        <div className="container-mobile">
-            {click && (<div className="row" key={data.key}>
-                {data}
+        return (
+            <div className="container">
+                <div className="container-mobile">
+                    <div className="row" key={data.key}>
+                        {data}
+                    </div>
+                </div>
             </div>
-            )}
-        </div>
-        </div>
-    );
-};
+        );
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gifcipes);
