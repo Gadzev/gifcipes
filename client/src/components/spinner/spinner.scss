@@ -1,0 +1,75 @@
+.container-spinner {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chasing-dots {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  animation: 2s ease-in-out 1s infinite rotate;
+  background: transparent;
+  left: 0;
+}
+
+
+.dot1, .dot2 {
+  width: 60%;
+  height: 60%;
+  background: rgb(226, 0 ,26);
+  border-radius: 100%;
+  position: absolute;
+  animation: 2s ease-in-out infinite bounce;
+  top: 0;
+}
+
+/* .chasing-dots.move {
+  animation: 2s ease-in infinite 1s move;
+}  */
+
+.dot2 {
+  top: auto;
+  bottom: 0px;
+  animation-delay: -1s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(0);
+  } 50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0);
+  } 100% {
+    transform: translate(500px);
+  }
+}
+
+
+
+

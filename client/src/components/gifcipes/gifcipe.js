@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import {getGifcipeById} from '../../store/actions';
+import Spinner from '../spinner';
 
 const mapStateToProps = state => ({
     gifcipeById: state.recipe.gifcipeById,
@@ -29,7 +30,7 @@ class Gifcipe extends React.Component {
         return (
             <div>
                 {isLoading ? (
-                    <h1> Loading... </h1>
+                    <Spinner />
                 ) : (
                    <h1> {gifcipeById.data.children[0].data.title} </h1>
                 )}
