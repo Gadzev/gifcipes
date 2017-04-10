@@ -27,12 +27,35 @@ class Gifcipe extends React.Component {
 
     render() {
         const {gifcipeById, isLoading} = this.props;
+        let source;
+
+        if (!isLoading) {
+            if (gifcipeById.data.children[0].data.domain === 'gfycat.com') {
+                source = gifcipeById.data.children[0].data.url.toString()
+                    .replace('.gifv', '').replace('https://', '')
+                    .replace('.gif', '')
+                    .replace('http://', '');
+                source = `https://giant.${source}.mp4`;
+            } else if (gifcipeById.data.children[0].data.domain === 'i.imgur.com') {
+                source = gifcipeById.data.children[0].data.url.toString()
+                    .replace('.gifv', '').replace('https://', '')
+                    .replace('.gif', '')
+                    .replace('http://', '');
+                source = `https://${source}.mp4`;
+            }
+        }
+
         return (
             <div>
                 {isLoading ? (
                     <Spinner />
                 ) : (
-                   <h1> {gifcipeById.data.children[0].data.title} </h1>
+                    <div>
+                    <h1> {gifcipeById.data.children[0].data.title} </h1>
+                        <video loop autoPlay controls>
+                            <source src={source} type="video/mp4" />
+                        </video>
+                    </div>
                 )}
             </div>
         );
