@@ -32,7 +32,7 @@ class Gifcipes extends React.Component {
         const {gifcipe, isLoading} = this.props;
 
         if (gifcipe) {
-        for (let i = 2; i < gifcipe.data.children.length; i++) {
+        for (let i = 0; i < gifcipe.data.children.length; i++) {
             let src = gifcipe.data.children[i].data.url.toString().replace('.gifv', '').replace('https://', '');
             src = src.replace('.gif', '');
             if (gifcipe.data.children[i].data.domain === 'gfycat.com') {
