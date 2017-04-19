@@ -27,7 +27,7 @@ class Gifcipe extends React.Component {
 
     render() {
         const {gifcipeById, isLoading} = this.props;
-        let source;
+        let source, altSource;
 
         if (!isLoading) {
             if (gifcipeById.data.children[0].data.domain === 'gfycat.com') {
@@ -35,6 +35,7 @@ class Gifcipe extends React.Component {
                     .replace('.gifv', '').replace('https://', '')
                     .replace('.gif', '')
                     .replace('http://', '');
+                altSource = `https://zippy.${source}.mp4`;
                 source = `https://giant.${source}.mp4`;
             } else if (gifcipeById.data.children[0].data.domain === 'i.imgur.com') {
                 source = gifcipeById.data.children[0].data.url.toString()
@@ -54,6 +55,7 @@ class Gifcipe extends React.Component {
                     <h1> {gifcipeById.data.children[0].data.title} </h1>
                         <video loop autoPlay controls>
                             <source src={source} type="video/mp4" />
+                            <source src={altSource} type="video/mp4" />
                         </video>
                     </div>
                 )}
