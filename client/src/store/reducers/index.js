@@ -4,13 +4,15 @@ import {notifications} from './notifications';
 import {users} from './users';
 import {gifcipes} from './gifcipes';
 import {recipe} from './recipe';
+import {testReducer} from './testReducer';
 
 export default {
-    auth, 
+    auth,
     notifications,
     helloWorld,
-    users, 
+    users,
     gifcipes,
     recipe,
+    testReducer,
 };
 

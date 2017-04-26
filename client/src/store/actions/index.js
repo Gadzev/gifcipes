@@ -64,3 +64,8 @@ export const getGifcipeById = payload => ({
     type: ActionTypes.GET_GIFCIPE_BY_ID,
     payload,
 });
+
+export const testData = payload => ({
+    type: ActionTypes.TEST_DATA,
+    payload,
+});
