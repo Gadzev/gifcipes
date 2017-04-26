@@ -30,7 +30,7 @@ export const addNotificationAction = ({ text, alertType }) => ({
     },
 });
 
-/** 
+/**
  * Remove a notification from the store
  * @param {String} notificationId
  */
@@ -55,8 +55,9 @@ export const logoutUser = payload => ({
 });
 
 // gifcipes actions
-export const getGifcipe = () => ({
+export const getGifcipe = payload => ({
     type: ActionTypes.GET_GIFCIPE,
+    payload,
 });
 
 export const getGifcipeById = payload => ({

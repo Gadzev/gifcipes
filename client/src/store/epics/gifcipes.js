@@ -3,8 +3,8 @@ import * as ActionTypes from '../actionTypes';
 
 export const getGifcipe = action$ => action$
   .ofType(ActionTypes.GET_GIFCIPE)
-  .switchMap(() => Observable
-    .ajax.get('https://www.reddit.com/r/gifrecipes/.json?')
+  .switchMap(({payload}) => Observable
+    .ajax.get(`https://www.reddit.com/r/gifrecipes/.json?after=${payload}`)
     .map(res => res.response)
     .mergeMap(response => Observable.of(
       {

@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    test: () => dispatch(getGifcipe()),
+    test: payload => dispatch(getGifcipe(payload)),
 });
 
 class Gifcipes extends React.Component {
@@ -24,7 +24,7 @@ class Gifcipes extends React.Component {
     }
 
     componentWillMount() {
-        this.props.test();
+        this.props.test('');
     }
 
     render() {
