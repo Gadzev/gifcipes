@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import InfiniteScroll from 'redux-infinite-scroll';
 
 import {getGifcipe, testData} from '../../store/actions';
 import './gifcipe.scss';
@@ -11,6 +12,7 @@ const mapStateToProps = state => ({
     gifcipe: state.gifcipes.gifcipe,
     isLoading: state.gifcipes.loading,
     renderData: state.testReducer.data,
+    loadingMore: state.testReducer.loadingMore,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -27,6 +29,13 @@ class Gifcipes extends React.Component {
 
     componentWillMount() {
         this.props.test('');
+    }
+
+    _loadMore(data, gifcipe) {
+        this.props.test(gifcipe.data.after);
+        setTimeout(() => {
+            this.props.testData(data);
+        }, 500);
     }
 
     render() {
@@ -74,6 +83,12 @@ class Gifcipes extends React.Component {
                                 onClick={this.props.test.bind(this, gifcipe.data.after)}>
                                 gifcipe CLICKENZI
                                 </button>
+                            <InfiniteScroll
+                                elementIsScrollable={false}
+                                loadingMore={this.props.loadingMore}
+                                loadMore={this._loadMore.bind(this, data, gifcipe)}>
+                                {this.props.renderData}
+                            </InfiniteScroll>
                             {this.props.renderData}
                         </div>
                     )}
