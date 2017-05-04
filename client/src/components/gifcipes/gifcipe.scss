@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
 
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:  flex;
+}
+
 .img-thumbnail {
     height: 250px;
     width: 350px;
@@ -7,8 +14,8 @@
 }
 
 .col-md-3 {
-     padding-right: 0px; 
-     padding-left: 0px; 
+     padding-right: 0px;
+     padding-left: 0px;
 }
 
 .container-mobile{

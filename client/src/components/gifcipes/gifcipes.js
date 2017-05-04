@@ -12,7 +12,6 @@ const mapStateToProps = state => ({
     gifcipe: state.gifcipes.gifcipe,
     isLoading: state.gifcipes.loading,
     renderData: state.testReducer.data,
-    loadingMore: state.testReducer.loadingMore,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -32,10 +31,10 @@ class Gifcipes extends React.Component {
     }
 
     _loadMore(data, gifcipe) {
-        this.props.test(gifcipe.data.after);
-        setTimeout(() => {
+        if (data && gifcipe) {
+            this.props.test(gifcipe.data.after);
             this.props.testData(data);
-        }, 500);
+        }
     }
 
     render() {
@@ -72,26 +71,15 @@ class Gifcipes extends React.Component {
         return (
             <div className="container">
                 <div className="container-mobile">
-                    {isLoading ? (
-                        <Spinner />
-                    ) : (
-                        <div className="row" key={1}>
-                            <button className="btn btn-default"
-                                onClick={this.props.testData.bind(this, data)} >
-                                testDATA CLICKENZI </button>
-                                <button className="btn btn-danger"
-                                onClick={this.props.test.bind(this, gifcipe.data.after)}>
-                                gifcipe CLICKENZI
-                                </button>
+                        <div className="row-eq-height" key={1}>
                             <InfiniteScroll
                                 elementIsScrollable={false}
-                                loadingMore={this.props.loadingMore}
+                                loadingMore={isLoading}
+                                threshold={1}
                                 loadMore={this._loadMore.bind(this, data, gifcipe)}>
-                                {this.props.renderData}
+                                    {this.props.renderData}
                             </InfiniteScroll>
-                            {this.props.renderData}
                         </div>
-                    )}
                 </div>
             </div>
         );

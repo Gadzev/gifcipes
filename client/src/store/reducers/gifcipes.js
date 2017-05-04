@@ -1,6 +1,6 @@
 import * as ActionTypes from '../actionTypes';
 
-const initialState = {gifcipe: null, loading: true};
+const initialState = {gifcipe: null, loading: false};
 
 export const gifcipes = (state = initialState, action) => {
     switch (action.type) {
