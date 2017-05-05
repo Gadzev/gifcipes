@@ -12,6 +12,8 @@ const mapStateToProps = state => ({
     gifcipe: state.gifcipes.gifcipe,
     isLoading: state.gifcipes.loading,
     renderData: state.testReducer.data,
+    next: state.gifcipes.next,
+    shouldGetNext: state.testReducer.shouldGetNext,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -27,12 +29,14 @@ class Gifcipes extends React.Component {
     }
 
     componentWillMount() {
-        this.props.test('');
+        if (this.props.shouldGetNext) {
+            this.props.test(this.props.next);
+        }
     }
 
     _loadMore(data, gifcipe) {
         if (data && gifcipe) {
-            this.props.test(gifcipe.data.after);
+            this.props.test(this.props.next);
             this.props.testData(data);
         }
     }
